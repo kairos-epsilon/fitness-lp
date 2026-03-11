@@ -1,0 +1,806 @@
+/* =========================================================================
+   Base & Variables
+   ========================================================================= */
+:root {
+    --color-text: #1a1a1a;
+    --color-text-light: #555555;
+    --color-bg: #ffffff;
+    --color-bg-light: #f7f7f7;
+    --color-accent: #0f172a;
+    /* 深みのあるネイビーブルー系で洗練さと力強さを表現 */
+    --color-border: #e2e8f0;
+    --color-white: #ffffff;
+
+    --font-heading: 'Noto Sans JP', sans-serif;
+    --font-body: 'Noto Sans JP', sans-serif;
+    --font-en: 'Inter', sans-serif;
+
+    --transition-fast: 0.3s ease;
+    --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+    --header-height: 80px;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+ul {
+    list-style: none;
+}
+
+/* =========================================================================
+   Layout & Utility
+   ========================================================================= */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.container-narrow {
+    max-width: 800px;
+}
+
+.container-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8%;
+}
+
+.section {
+    padding: 120px 0;
+}
+
+.bg-light {
+    background-color: var(--color-bg-light);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.sp-br {
+    display: none;
+}
+
+/* =========================================================================
+   Typography
+   ========================================================================= */
+.section-title {
+    font-family: var(--font-en);
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin-bottom: 60px;
+    text-align: center;
+    position: relative;
+}
+
+.section-subtitle {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-light);
+    margin-top: 10px;
+    letter-spacing: 0.15em;
+}
+
+/* =========================================================================
+   Buttons
+   ========================================================================= */
+.btn {
+    display: inline-block;
+    padding: 18px 48px;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    border: 1px solid var(--color-accent);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-align: center;
+}
+
+.btn-hero,
+.btn-cta {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border-color: var(--color-accent);
+}
+
+.btn-hero:hover,
+.btn-cta:hover {
+    background-color: var(--color-white);
+    color: var(--color-accent);
+}
+
+/* =========================================================================
+   Header & Navigation
+   ========================================================================= */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: transparent;
+    z-index: 1000;
+    transition: background-color var(--transition-fast), border-bottom var(--transition-fast);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header.scrolled {
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.header-container {
+    max-width: 1400px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-en);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-white);
+    transition: color var(--transition-fast);
+    letter-spacing: 0.05em;
+}
+
+.header.scrolled .logo,
+.header.scrolled .nav-link {
+    color: var(--color-accent);
+}
+
+.nav-list {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-link {
+    font-family: var(--font-en);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-white);
+    letter-spacing: 0.1em;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width var(--transition-fast);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    z-index: 1001;
+}
+
+.menu-toggle .bar {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-white);
+    transition: var(--transition-fast);
+    left: 0;
+}
+
+.header.scrolled .menu-toggle .bar {
+    background-color: var(--color-accent);
+}
+
+.menu-toggle .bar:nth-child(1) {
+    top: 0;
+}
+
+.menu-toggle .bar:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.menu-toggle .bar:nth-child(3) {
+    bottom: 0;
+}
+
+.menu-toggle.active .bar:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    background-color: var(--color-accent);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+    background-color: var(--color-accent);
+}
+
+/* =========================================================================
+   Hero Section
+   ========================================================================= */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: var(--color-white);
+    padding: 0 20px;
+    max-width: 900px;
+}
+
+.hero-catch {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+}
+
+.hero-sub {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 50px;
+    letter-spacing: 0.1em;
+    opacity: 0.9;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color-white);
+    font-family: var(--font-en);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    z-index: 1;
+}
+
+.scroll-indicator .arrow {
+    width: 1px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-top: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-indicator .arrow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: var(--color-white);
+    animation: scrollDown 2s infinite ease-in-out;
+}
+
+@keyframes scrollDown {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(200%);
+    }
+}
+
+/* =========================================================================
+   Concept Section
+   ========================================================================= */
+.concept-image {
+    width: 45%;
+    position: relative;
+}
+
+.concept-image img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    z-index: 1;
+    position: relative;
+}
+
+.image-accent {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--color-accent);
+    z-index: 0;
+}
+
+.concept-text {
+    width: 45%;
+}
+
+.concept-text .section-title {
+    text-align: left;
+}
+
+.concept-description {
+    color: var(--color-text-light);
+    font-size: 1.05rem;
+    line-height: 2;
+}
+
+/* =========================================================================
+   Services Section (Minimal Table Structure variant)
+   ========================================================================= */
+.services-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.service-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: var(--transition-fast);
+}
+
+.service-card:hover {
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: var(--color-white);
+}
+
+.service-content {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.service-name {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--color-accent);
+}
+
+.service-desc {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+}
+
+.service-price {
+    font-family: var(--font-en);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    white-space: nowrap;
+}
+
+.price-unit {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text-light);
+}
+
+/* =========================================================================
+   Gallery Section
+   ========================================================================= */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    background-color: var(--color-bg-light);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+    color: var(--color-white);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: var(--transition-fast);
+}
+
+.gallery-caption span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item:hover .gallery-caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================================
+   Access Section
+   ========================================================================= */
+.info-card {
+    background-color: var(--color-white);
+    padding: 60px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--color-border);
+}
+
+.info-shop-name {
+    font-family: var(--font-en);
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 0.1em;
+}
+
+.info-list li {
+    display: flex;
+    padding: 20px 0;
+    border-bottom: 1px dashed var(--color-border);
+}
+
+.info-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.info-label {
+    width: 30%;
+    font-family: var(--font-en);
+    font-weight: 600;
+    color: var(--color-accent);
+    letter-spacing: 0.05em;
+}
+
+.info-value {
+    width: 70%;
+    color: var(--color-text-light);
+}
+
+/* =========================================================================
+   CTA Section
+   ========================================================================= */
+.cta {
+    position: relative;
+    padding: 150px 0;
+    background-image: url('https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=2069&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.cta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.85);
+    /* 深いネイビーで画面を引き締める */
+}
+
+.cta-message {
+    color: var(--color-white);
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 50px;
+    letter-spacing: 0.05em;
+}
+
+.cta .btn-cta {
+    background-color: var(--color-white);
+    color: var(--color-accent);
+    border-color: var(--color-white);
+    font-size: 1.1rem;
+    padding: 20px 60px;
+}
+
+.cta .btn-cta:hover {
+    background-color: transparent;
+    color: var(--color-white);
+}
+
+/* =========================================================================
+   Footer
+   ========================================================================= */
+.footer {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    padding: 80px 0 40px;
+}
+
+.footer-logo {
+    font-family: var(--font-en);
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 40px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.footer-links a {
+    font-family: var(--font-en);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+.copyright {
+    font-family: var(--font-en);
+    font-size: 0.8rem;
+    opacity: 0.5;
+    letter-spacing: 0.05em;
+}
+
+/* =========================================================================
+   Animations (Intersection Observer targets)
+   ========================================================================= */
+.observer-target {
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in-up {
+    transform: translateY(30px);
+}
+
+.slide-in-left {
+    transform: translateX(-40px);
+}
+
+.slide-in-right {
+    transform: translateX(40px);
+}
+
+.observer-target.is-visible {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* =========================================================================
+   Responsive Design
+   ========================================================================= */
+@media (max-width: 1024px) {
+    .hero-catch {
+        font-size: 3rem;
+    }
+
+    .container-flex {
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .concept-image,
+    .concept-text {
+        width: 100%;
+    }
+
+    .image-accent {
+        display: none;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .service-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 40px 20px;
+    }
+
+    .service-price {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 80px 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+
+    .sp-br {
+        display: block;
+    }
+
+    .hero-catch {
+        font-size: 2.2rem;
+    }
+
+    .hero-sub {
+        font-size: 1rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .gallery-caption {
+        opacity: 1;
+        transform: translateY(0);
+        padding: 15px;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .info-card {
+        padding: 30px 20px;
+    }
+
+    .info-list li {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .info-label,
+    .info-value {
+        width: 100%;
+    }
+
+    .cta {
+        padding: 100px 0;
+    }
+
+    .cta-message {
+        font-size: 1.8rem;
+    }
+
+    .cta .btn-cta {
+        padding: 16px 40px;
+        width: 100%;
+    }
+
+    /* Mobile Navigation */
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 400px;
+        height: 100vh;
+        background-color: var(--color-white);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: right var(--transition-slow);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .nav-link {
+        color: var(--color-accent);
+        font-size: 1.2rem;
+    }
+}

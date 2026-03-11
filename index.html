@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Fitness Studio | 完全パーソナル指導であなたの目標達成をサポート</title>
+    <meta name="description"
+        content="Nova Fitness Studioは、完全予約制のパーソナルトレーニングジムです。一人ひとりの体力・目的に合わせたトレーニングプログラムを設計し、最短で理想の身体を目指します。">
+    <!-- Google Fonts: Noto Sans JP (ゴシック体) & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- ヘッダー -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <h1 class="logo">Nova Fitness Studio</h1>
+
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#concept" class="nav-link">CONCEPT</a></li>
+                    <li><a href="#services" class="nav-link">SERVICES</a></li>
+                    <li><a href="#gallery" class="nav-link">GALLERY</a></li>
+                    <li><a href="#access" class="nav-link">ACCESS</a></li>
+                </ul>
+            </nav>
+
+            <!-- ハンバーガーメニュー (Mobile) -->
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero セクション -->
+        <section class="hero" id="home">
+            <div class="hero-overlay"></div>
+            <div class="hero-content fade-in-up">
+                <h2 class="hero-catch copy-catch">理想の身体を、最短で。</h2>
+                <p class="hero-sub copy-sub">完全パーソナル指導であなたの目標達成をサポート</p>
+                <a href="#cta" class="btn btn-hero">無料体験を予約する</a>
+            </div>
+            <!-- Scroll indicator -->
+            <div class="scroll-indicator">
+                <span>SCROLL</span>
+                <div class="arrow"></div>
+            </div>
+        </section>
+
+        <!-- Concept セクション -->
+        <section class="section concept" id="concept">
+            <div class="container container-flex">
+                <div class="concept-image observer-target slide-in-left">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop"
+                        alt="Nova Fitness Studio Trainer and Client" loading="lazy">
+                    <div class="image-accent"></div>
+                </div>
+                <div class="concept-text observer-target slide-in-right">
+                    <h2 class="section-title">Concept<span class="section-subtitle">ジムについて</span></h2>
+                    <p class="concept-description">
+                        Nova Fitness Studioは、完全予約制のパーソナルトレーニングジムです。<br>
+                        一人ひとりの体力・目的に合わせたトレーニングプログラムを設計し、<br>
+                        最短で理想の身体を目指します。<br><br>
+                        初心者から本格的なボディメイクまで、専属トレーナーがサポートします。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services セクション -->
+        <section class="section bg-light services" id="services">
+            <div class="container">
+                <div class="text-center observer-target fade-in-up">
+                    <h2 class="section-title">Services<span class="section-subtitle">プログラム</span></h2>
+                </div>
+
+                <div class="services-grid observer-target fade-in-up" data-delay="200">
+                    <!-- Service 1 -->
+                    <div class="service-card">
+                        <div class="service-content">
+                            <h3 class="service-name">パーソナルトレーニング</h3>
+                            <p class="service-desc">専属トレーナーによるマンツーマントレーニング</p>
+                        </div>
+                        <div class="service-price">¥8,000 <span class="price-unit">/ session</span></div>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="service-card">
+                        <div class="service-content">
+                            <h3 class="service-name">ダイエットプログラム</h3>
+                            <p class="service-desc">食事管理とトレーニングを組み合わせた短期集中プログラム</p>
+                        </div>
+                        <div class="service-price">¥98,000 <span class="price-unit">/ 2 months</span></div>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="service-card">
+                        <div class="service-content">
+                            <h3 class="service-name">ボディメイク</h3>
+                            <p class="service-desc">筋力アップ・姿勢改善を目的としたトレーニング</p>
+                        </div>
+                        <div class="service-price">¥10,000 <span class="price-unit">/ session</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery セクション -->
+        <section class="section gallery" id="gallery">
+            <div class="container">
+                <div class="text-center observer-target fade-in-up">
+                    <h2 class="section-title">Gallery<span class="section-subtitle">施設・風景</span></h2>
+                </div>
+
+                <div class="gallery-grid observer-target fade-in-up" data-delay="300">
+                    <!-- Gallery Item 1 -->
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=2070&auto=format&fit=crop"
+                            alt="最新トレーニング設備" loading="lazy">
+                        <div class="gallery-caption">
+                            <span>最新トレーニング設備</span>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 2 -->
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=2070&auto=format&fit=crop"
+                            alt="パーソナルトレーニング風景" loading="lazy">
+                        <div class="gallery-caption">
+                            <span>パーソナルトレーニング風景</span>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 3 -->
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop"
+                            alt="ボディメイクセッション" loading="lazy">
+                        <div class="gallery-caption">
+                            <span>ボディメイクセッション</span>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 4 -->
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?q=80&w=1974&auto=format&fit=crop"
+                            alt="トレーニングスペース" loading="lazy">
+                        <div class="gallery-caption">
+                            <span>トレーニングスペース</span>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 5 -->
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1620286895316-d8cc8f1ee3c3?q=80&w=1968&auto=format&fit=crop"
+                            alt="プロフェッショナルトレーナー" loading="lazy">
+                        <div class="gallery-caption">
+                            <span>プロフェッショナルトレーナー</span>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 6 -->
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=2070&auto=format&fit=crop"
+                            alt="完全予約制スタジオ" loading="lazy">
+                        <div class="gallery-caption">
+                            <span>完全予約制スタジオ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Access & Info セクション -->
+        <section class="section bg-light access" id="access">
+            <div class="container container-narrow observer-target fade-in-up">
+                <div class="text-center">
+                    <h2 class="section-title">Access<span class="section-subtitle">アクセス・店舗情報</span></h2>
+                </div>
+
+                <div class="info-card">
+                    <h3 class="info-shop-name">Nova Fitness Studio</h3>
+                    <ul class="info-list">
+                        <li>
+                            <span class="info-label">Address</span>
+                            <span class="info-value">東京都渋谷区〇〇1-2-3</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Phone</span>
+                            <span class="info-value">03-0000-0000</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Business Hours</span>
+                            <span class="info-value">7:00 – 22:00</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Closed Days</span>
+                            <span class="info-value">不定休</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA セクション -->
+        <section class="cta" id="cta">
+            <div class="cta-overlay"></div>
+            <div class="container text-center observer-target fade-in-up" style="position: relative; z-index: 1;">
+                <h2 class="cta-message">最短で理想の身体を、<br class="sp-br">共に目指しませんか？</h2>
+                <a href="#" class="btn btn-cta">無料体験を予約する</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container text-center">
+            <h2 class="footer-logo">Nova Fitness Studio</h2>
+            <div class="footer-links">
+                <a href="#concept">CONCEPT</a>
+                <a href="#services">SERVICES</a>
+                <a href="#gallery">GALLERY</a>
+                <a href="#access">ACCESS</a>
+            </div>
+            <p class="copyright">&copy; 2026 Nova Fitness Studio. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>
