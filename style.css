@@ -664,6 +664,11 @@ ul {
     transform: translateX(40px);
 }
 
+/* 表示前の slide-in-right が画面右端からはみ出して横スクロールが出るのを防ぐ */
+.concept {
+    overflow-x: clip;
+}
+
 .observer-target.is-visible {
     opacity: 1;
     transform: translate(0, 0);
